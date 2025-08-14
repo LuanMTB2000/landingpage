@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MrJack - O Detalhe Perfeito para o Grande Dia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #dc2626;
+            --secondary-color: #64748b;
+            --text-color: #1e293b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --shadow-light: rgba(0,0,0,0.05);
+            --shadow-strong: rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), #ef4444);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow-strong);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            text-align: left;
+            padding: 50px 0;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 550px;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow-strong);
+        }
+
+        /* Value Props Section */
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 80px 0;
+        }
+
+        .value-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px var(--shadow-strong);
+        }
+
+        .value-card i {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .value-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Product Showcase */
+        .product-showcase {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .product-showcase h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-details h4 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .product-details p {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .how-it-works h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+        
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step-card {
+            background-color: var(--card-bg);
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            position: relative;
+        }
+        
+        .step-card .step-number {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--primary-color);
+            opacity: 0.1;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+
+        .step-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            background-color: var(--text-color);
+            color: white;
+            font-size: 0.9em;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            .hero-content p {
+                font-size: 1em;
+            }
+            .hero-image {
+                margin-top: 30px;
+            }
+            .value-props, .product-grid, .step-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>O Detalhe Perfeito para o Grande Dia.</h1>
+            <p>Gravatas de alto padrão para o seu casamento, com a elegância e a praticidade que você merece.</p>
+            <a href="https://luanmtb2000.github.io/agenda/" class="btn">Agende sua Prova Gratuita</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://via.placeholder.com/600x400?text=Noivo+e+Padrinhos" alt="Noivo e padrinhos de casamento">
+        </div>
+    </header>
+
+    <main>
+        <section class="value-props container">
+            <div class="value-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Consultoria de Estilo</h3>
+                <p>Nossa equipe de especialistas ajuda a escolher a cor e o tecido ideal para combinar com o seu evento.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-gem"></i>
+                <h3>Qualidade Impecável</h3>
+                <p>Gravatas de seda e acabamento premium para um visual sofisticado e memorável no seu grande dia.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Processo sem Estresse</h3>
+                <p>Alugue, use e devolva. Todo o processo é rápido e fácil, do agendamento à entrega.</p>
+            </div>
+        </section>
+
+        <section class="product-showcase container">
+            <h2>Nossos Estilos</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250?text=Gravata+Azul" alt="Gravata Azul">
+                    <div class="product-details">
+                        <h4>Coleção Clássica</h4>
+                        <p>A partir de R$ 35,00</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250?text=Gravata+Bordo" alt="Gravata Bordô">
+                    <div class="product-details">
+                        <h4>Tons Terrosos</h4>
+                        <p>A partir de R$ 35,00</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250?text=Gravata+Verde" alt="Gravata Verde">
+                    <div class="product-details">
+                        <h4>Coleção Padrinhos</h4>
+                        <p>A partir de R$ 35,00</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/250?text=Gravata+Cinza" alt="Gravata Cinza">
+                    <div class="product-details">
+                        <h4>Estilo Moderno</h4>
+                        <p>A partir de R$ 35,00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="how-it-works container">
+            <h2>Como Funciona</h2>
+            <div class="step-grid">
+                <div class="step-card">
+                    <span class="step-number">1</span>
+                    <h3>Agende a Prova</h3>
+                    <p>Use nosso calendário online para encontrar a data e horário perfeitos para você.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">2</span>
+                    <h3>Receba a Consultoria</h3>
+                    <p>Nossa equipe te espera para uma prova completa e para te ajudar a escolher o traje ideal.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-number">3</span>
+                    <h3>Pronto para o Evento</h3>
+                    <p>Retire seu traje no dia e devolva-o sem preocupações. Nós cuidamos da limpeza!</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container" style="text-align: center; padding: 50px 0;">
+            <a href="https://luanmtb2000.github.io/agenda/" class="btn">Agende sua Prova Agora</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MrJack. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
