@@ -30,6 +30,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -64,15 +65,31 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            min-height: 80vh;
+            min-height: 100vh;
             text-align: left;
             padding: 50px 0;
             gap: 40px;
+            position: relative;
+            background-color: var(--bg-color); /* Fundo sólido para esconder o vídeo no início */
+        }
+        
+        .hero-image-container {
+            flex: 1;
+            max-width: 550px;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow-strong);
         }
 
         .hero-content {
             flex: 1;
             max-width: 500px;
+            z-index: 10;
         }
 
         .hero-content h1 {
@@ -86,18 +103,6 @@
             font-size: 1.2em;
             color: var(--secondary-color);
             margin-bottom: 30px;
-        }
-
-        .hero-image {
-            flex: 1;
-            max-width: 550px;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px var(--shadow-strong);
         }
 
         /* Value Props Section */
@@ -236,6 +241,7 @@
             .hero {
                 flex-direction: column;
                 text-align: center;
+                min-height: 80vh;
             }
             .hero-content {
                 max-width: 100%;
@@ -246,8 +252,8 @@
             .hero-content p {
                 font-size: 1em;
             }
-            .hero-image {
-                margin-top: 30px;
+            .hero-image-container {
+                display: none; /* Esconde a imagem no mobile para dar mais foco ao texto */
             }
             .value-props, .product-grid, .step-grid {
                 grid-template-columns: 1fr;
@@ -256,6 +262,10 @@
     </style>
 </head>
 <body>
+    <video autoplay muted loop id="background-video">
+        <source src="/css/1755133237484.mp4" type="video/mp4">
+        Seu navegador não suporta a tag de vídeo.
+    </video>
 
     <header class="hero">
         <div class="hero-content">
@@ -263,8 +273,8 @@
             <p>Gravatas de alto padrão para o seu casamento, com a elegância e a praticidade que você merece.</p>
             <a href="https://luanmtb2000.github.io/agenda/" class="btn">Agende sua Prova Gratuita</a>
         </div>
-        <div class="hero-image">
-            <img src="https://via.placeholder.com/600x400?text=Noivo+e+Padrinhos" alt="Noivo e padrinhos de casamento">
+        <div class="hero-image-container">
+            <img class="hero-image" src="/css/teste%20terno.webp" alt="Noivo e padrinhos de casamento">
         </div>
     </header>
 
@@ -353,6 +363,20 @@
             <p>&copy; 2025 MrJack. Todos os direitos reservados.</p>
         </div>
     </footer>
+    
+    <script>
+        const heroSection = document.querySelector('.hero');
+        const video = document.getElementById('background-video');
+
+        window.addEventListener('scroll', () => {
+            const heroHeight = heroSection.offsetHeight;
+            if (window.scrollY > heroHeight) {
+                video.classList.add('show');
+            } else {
+                video.classList.remove('show');
+            }
+        });
+    </script>
 
 </body>
 </html>
